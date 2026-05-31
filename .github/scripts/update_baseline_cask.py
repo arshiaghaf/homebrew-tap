@@ -12,6 +12,7 @@ import sys
 import urllib.request
 
 
+BASELINE_REPOSITORY = "arshiaghaf/Baseline"
 USER_AGENT = "arshiaghaf-homebrew-tap-updater"
 
 
@@ -56,11 +57,6 @@ def update_cask(path: pathlib.Path, version: str, digest: str) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--tag", required=True, help="Release tag, e.g. v0.1.0")
-    parser.add_argument(
-        "--repository",
-        default="arshiaghaf/Baseline",
-        help="Source repository, e.g. arshiaghaf/Baseline",
-    )
     args = parser.parse_args()
 
     tag = args.tag.strip()
@@ -69,7 +65,7 @@ def main() -> int:
 
     version = tag[1:]
     artifact = f"Baseline-{version}-unsigned.dmg"
-    url = f"https://github.com/{args.repository}/releases/download/{tag}/{artifact}"
+    url = f"https://github.com/{BASELINE_REPOSITORY}/releases/download/{tag}/{artifact}"
     digest = sha256(url)
     path = pathlib.Path("Casks/baseline.rb")
     if not path.exists():

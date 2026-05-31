@@ -8,11 +8,6 @@ on:
         description: "Baseline release tag, e.g. v0.1.0"
         required: true
         type: string
-      repository:
-        description: "Source repository"
-        required: false
-        default: "arshiaghaf/Baseline"
-        type: string
   repository_dispatch:
     types:
       - baseline-release
@@ -36,16 +31,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           INPUT_TAG: ${{ inputs.tag }}
-          INPUT_REPOSITORY: ${{ inputs.repository }}
           PAYLOAD_TAG: ${{ github.event.client_payload.tag }}
-          PAYLOAD_REPOSITORY: ${{ github.event.client_payload.repository }}
         run: |
           tag="${INPUT_TAG:-$PAYLOAD_TAG}"
-          repository="${INPUT_REPOSITORY:-${PAYLOAD_REPOSITORY:-arshiaghaf/Baseline}}"
 
           python3 .github/scripts/update_baseline_cask.py \
-            --tag "$tag" \
-            --repository "$repository"
+            --tag "$tag"
 
       - name: Commit and push
         env:
