@@ -41,5 +41,5 @@ brew uninstall --cask --zap arshiaghaf/tap/baseline
 ## Notes
 
 - Run `brew info --cask arshiaghaf/tap/<name>` for cask details.
-- `baseline` does not have a packaged release yet. The cask is staged for the first unsigned DMG release and will install once that release artifact exists. Pin the cask checksum after the first release artifact is published.
+- `baseline` does not have a packaged release yet. The cask is staged for the first unsigned DMG release and will install once that release artifact exists. After publishing the release, replace `sha256 :no_check` with the SHA-256 hash of the uploaded DMG.
 - `baseline` currently stages an unsigned DMG. macOS Gatekeeper may warn when opening unsigned builds.
