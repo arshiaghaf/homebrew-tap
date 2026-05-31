@@ -36,10 +36,10 @@ brew uninstall --cask arshiaghaf/tap/baseline
 brew uninstall --cask --zap arshiaghaf/tap/baseline
 ```
 
-> [`baseline`](https://github.com/arshiaghaf/baseline) can manage Homebrew app updates and uninstall Homebrew-managed apps for you, including casks from this tap.
+> [`baseline`](https://github.com/arshiaghaf/Baseline) can manage Homebrew app updates and uninstall Homebrew-managed apps for you, including casks from this tap.
 
 ## Notes
 
 - Run `brew info --cask arshiaghaf/tap/<name>` for cask details.
-- `baseline` does not have a packaged release yet. The cask is staged for the first unsigned DMG release and will install once that release artifact exists.
+- `baseline` does not have a packaged release yet. The cask is staged for the first unsigned DMG release and will install once that release artifact exists. Pin the cask checksum after the first release artifact is published.
 - `baseline` currently stages an unsigned DMG. macOS Gatekeeper may warn when opening unsigned builds.
