@@ -1,5 +1,5 @@
 name: Update Baseline Cask
-run-name: Update Baseline cask for ${{ inputs.tag || github.event.client_payload.tag }}
+run-name: Update Baseline cask for ${{ inputs.tag || github.event.client_payload.tag }}${{ inputs.request_id && format(' ({0})', inputs.request_id) || '' }}
 
 on:
   workflow_dispatch:
@@ -7,6 +7,10 @@ on:
       tag:
         description: "Baseline release tag, e.g. v0.1.0"
         required: true
+        type: string
+      request_id:
+        description: "Unique caller-generated ID used to identify this workflow run"
+        required: false
         type: string
   repository_dispatch:
     types:
