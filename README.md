@@ -36,7 +36,7 @@ brew uninstall --cask arshiaghaf/tap/baseline
 brew uninstall --cask --zap arshiaghaf/tap/baseline
 ```
 
-> [`baseline`](https://github.com/arshiaghaf/baseline) can manage Homebrew app updates and uninstall Homebrew-managed apps for you, including casks from this tap.
+> [`baseline`](https://github.com/arshiaghaf/Baseline) can manage Homebrew app updates and uninstall Homebrew-managed apps for you, including casks from this tap.
 
 ## Notes
 
