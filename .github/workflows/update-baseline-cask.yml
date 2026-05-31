@@ -1,0 +1,64 @@
+name: Update Baseline Cask
+run-name: Update Baseline cask for ${{ inputs.tag || github.event.client_payload.tag }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Baseline release tag, e.g. v0.1.0"
+        required: true
+        type: string
+      repository:
+        description: "Source repository"
+        required: false
+        default: "arshiaghaf/Baseline"
+        type: string
+  repository_dispatch:
+    types:
+      - baseline-release
+
+permissions:
+  contents: write
+
+jobs:
+  update-baseline-cask:
+    runs-on: macos-latest
+    steps:
+      - name: Check out tap repository
+        uses: actions/checkout@v6
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Update Baseline cask
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          INPUT_TAG: ${{ inputs.tag }}
+          INPUT_REPOSITORY: ${{ inputs.repository }}
+          PAYLOAD_TAG: ${{ github.event.client_payload.tag }}
+          PAYLOAD_REPOSITORY: ${{ github.event.client_payload.repository }}
+        run: |
+          tag="${INPUT_TAG:-$PAYLOAD_TAG}"
+          repository="${INPUT_REPOSITORY:-${PAYLOAD_REPOSITORY:-arshiaghaf/Baseline}}"
+
+          python3 .github/scripts/update_baseline_cask.py \
+            --tag "$tag" \
+            --repository "$repository"
+
+      - name: Commit and push
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+          PAYLOAD_TAG: ${{ github.event.client_payload.tag }}
+        run: |
+          tag="${INPUT_TAG:-$PAYLOAD_TAG}"
+
+          git add Casks/baseline.rb
+          if git diff --cached --quiet; then
+            echo "Casks/baseline.rb already up to date for ${tag}"
+            exit 0
+          fi
+
+          git commit -m "baseline: update cask for ${tag}"
+          git push
