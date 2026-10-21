@@ -22,7 +22,7 @@ brew install --cask <name>
 
 ### Casks
 
-- `baseline` - Manage and update all the apps installed on your Mac in one app.
+- `baseline` - Manage and update all the apps installed on your Mac in one app (Apple Silicon only).
 
 ## Update / Uninstall
 
