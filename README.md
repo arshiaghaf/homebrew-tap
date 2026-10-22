@@ -1,4 +1,4 @@
-# arshighaf's Homebrew Tap
+# arshiaghaf's Homebrew Tap
 
 Homebrew tap for my projects.
 
