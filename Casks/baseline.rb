@@ -2,10 +2,10 @@ cask "baseline" do
   version "0.10.0"
   sha256 "d62ff482e4b0858ae033c962f5edf8db7b71eaee5d61a964ff98dd8bc11940dd"
 
-  url "https://github.com/arshiaghaf/Baseline/releases/download/v#{version}/Baseline-#{version}-unsigned.dmg"
+  url "https://github.com/arshiaghaf/baseline/releases/download/v#{version}/Baseline-#{version}-unsigned.dmg"
   name "Baseline"
   desc "Manage app updates from App Store, Homebrew, Sparkle, and direct downloads"
-  homepage "https://github.com/arshiaghaf/Baseline"
+  homepage "https://github.com/arshiaghaf/baseline"
 
   livecheck do
     url :url

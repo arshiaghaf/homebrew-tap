@@ -12,7 +12,7 @@ import sys
 import urllib.request
 
 
-BASELINE_REPOSITORY = "arshiaghaf/Baseline"
+BASELINE_REPOSITORY = "arshiaghaf/baseline"
 USER_AGENT = "arshiaghaf-homebrew-tap-updater"
 
 
