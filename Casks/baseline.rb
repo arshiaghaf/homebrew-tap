@@ -1,6 +1,6 @@
 cask "baseline" do
-  version "0.11.0"
-  sha256 "eedc426a2db62e25f22c7b0ecc3448a232dcea9a56175dcb33ec73c4fae2cb10"
+  version "0.12.0"
+  sha256 "6dcfa811edbeb75822decb7231044d9bee0f0cf6de740539bdcab64c9c13270d"
 
   url "https://github.com/arshiaghaf/baseline/releases/download/v#{version}/Baseline-#{version}-unsigned.dmg"
   name "Baseline"
